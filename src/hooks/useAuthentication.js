@@ -73,38 +73,39 @@ export const useAuthentication = () => {
     signOut(auth);
   };
 
-  // const login = async (data) => {
-  //   checkIfIsCancelled();
+  // login - sign in
 
-  //   setLoading(true);
-  //   setError(false);
+  const login = async (data) => {
+    checkIfIsCancelled();
 
-  //   try {
-  //     await signInWithEmailAndPassword(auth, data.email, data.password);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     console.log(typeof error.message);
-  //     console.log(error.message.includes("user-not"));
+    setLoading(true);
+    setError(false);
 
-  //     let systemErrorMessage;
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+    } catch (error) {
+      //     console.log(error.message);
+      //     console.log(typeof error.message);
+      //     console.log(error.message.includes("user-not"));
 
-  //     if (error.message.includes("user-not-found")) {
-  //       systemErrorMessage = "Usuário não encontrado.";
-  //     } else if (error.message.includes("wrong-password")) {
-  //       systemErrorMessage = "Senha incorreta.";
-  //     } else {
-  //       systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
-  //     }
+      let systemErrorMessage;
 
-  //     console.log(systemErrorMessage);
+      if (error.message.includes('user-not-found')) {
+        systemErrorMessage = 'Usuário não encontrado.';
+      } else if (error.message.includes('wrong-password')) {
+        systemErrorMessage = 'Senha incorreta.';
+      } else {
+        systemErrorMessage = 'Ocorreu um erro, por favor tenta mais tarde.';
+      }
 
-  //     setError(systemErrorMessage);
-  //   }
+      //     console.log(systemErrorMessage);
 
-  //   console.log(error);
+      setError(systemErrorMessage);
+      setLoading(false);
+    }
 
-  //   setLoading(false);
-  // };
+    //   console.log(error);
+  };
 
   useEffect(() => {
     return () => setCancelled(true);
@@ -116,5 +117,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   };
 };
