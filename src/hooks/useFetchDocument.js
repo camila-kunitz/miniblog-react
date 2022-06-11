@@ -8,6 +8,7 @@ export const useFetchDocument = (docCollection, id) => {
   const [loading, setLoading] = useState(null);
 
   // deal with memory leak
+  // eslint-disable-next-line no-unused-vars
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {

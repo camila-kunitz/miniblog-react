@@ -13,6 +13,10 @@ Curso:
 
 ## Como iniciar o projeto:
 
+**É possivel visualizar o projeto online na Netlify:** [Link Netlify](https://camila-miniblog.netlify.app/)
+
+Alternativamente:
+
 - Clone o projeto;
 - Na pasta do projeto, rode o comando `npm install` para instalar os pacotes necessários para o projeto;
 - Em seguida, rode o comando `npm start` para iniciar o projeto React;
